@@ -40,6 +40,12 @@ module Screenshot
       responseJson[:screenshots]
     end
     
+    def zipped_url job_id
+      res = http_get_request :extend_uri => "#{job_id}.json"
+      responseJson = parse res
+      responseJson[:zipped_url]
+    end
+    
     private
     def authenticate options, uri=API
       http_get_request options, uri
